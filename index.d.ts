@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,18 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/blas-ext-base-dfirst-index-less-than' ).ndarray;
-
-
-// MAIN //
+import { float64ndarray } from '@stdlib/types/ndarray';
 
 /**
 * Returns the index of the first element in a one-dimensional double-precision floating-point ndarray which is less than a corresponding element in another one-dimensional double-precision floating-point ndarray.
@@ -41,8 +34,8 @@ var strided = require( '@stdlib/blas-ext-base-dfirst-index-less-than' ).ndarray;
 *
 * -   When comparing elements, the function checks whether an element in the first one-dimensional input ndarray is less than a corresponding element in the second one-dimensional input ndarray using the less-than operator `<`. As a consequence, comparisons involving `NaN` always evaluate to `false`.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {integer} index
+* @param arrays - array-like object containing ndarrays
+* @returns index
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
@@ -53,13 +46,9 @@ var strided = require( '@stdlib/blas-ext-base-dfirst-index-less-than' ).ndarray;
 * var idx = dfirstIndexLessThan( [ x, y ] );
 * // returns 2
 */
-function dfirstIndexLessThan( arrays ) {
-	var x = arrays[ 0 ];
-	var y = arrays[ 1 ];
-	return strided( numelDimension( x, 0 ), getData( x ), getStride( x, 0 ), getOffset( x ), getData( y ), getStride( y, 0 ), getOffset( y ) ); // eslint-disable-line max-len
-}
+declare function dfirstIndexLessThan( arrays: [ float64ndarray, float64ndarray ] ): number;
 
 
 // EXPORTS //
 
-module.exports = dfirstIndexLessThan;
+export = dfirstIndexLessThan;
